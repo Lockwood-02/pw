@@ -1,0 +1,141 @@
+import React from "react";
+
+const initialBanner = [
+  "Welcome to Isaac's Terminal Portfolio",
+  "Type \u001b[38;2;0;255;153mhelp\u001b[0m to get started.",
+];
+
+const projects = [
+  { name: "The Salon", link: "https://example.com/salon", tag: "React/Node" },
+  {
+    name: "GIS Toolkit",
+    link: "https://example.com/gis",
+    tag: "Python/ArcGIS",
+  },
+  {
+    name: "BladeCity (Game)",
+    link: "https://example.com/bladecity",
+    tag: "Godot/Blender",
+  },
+];
+
+export default function Terminal() {
+  const [history, setHistory] = React.useState(initialBanner);
+  const [input, setInput] = React.useState("");
+  const [theme, setTheme] = React.useState("green"); // green | amber | ice
+  const inputRef = React.useRef(null);
+
+  React.useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+
+  const print = (lines) =>
+    setHistory((h) => [...h, ...(Array.isArray(lines) ? lines : [lines])]);
+  const clear = () => setHistory([]);
+
+  const palette = {
+    green: "text-[#00ff99]",
+    amber: "text-terminal-warning",
+    ice: "text-[#80eaff]",
+  }[theme];
+
+  const handleCommand = (raw) => {
+    if (!cmd) return;
+    print(`$ ${cmd}`);
+
+    const [name, ...args] = cmd.split(/\s+/);
+    switch (name.toLowerCase()) {
+      case "help":
+        print([
+          "Available commands:",
+          " help Show this help",
+          " about About me",
+          " projects Featured projects",
+          " contact How to reach me",
+          " theme [green|amber|ice] Switch accent color",
+          " clear Clear the screen",
+        ]);
+        break;
+      case "about":
+        print([
+          "Isaac Lockwood — Full‑stack dev & GIS tinkerer.",
+          "I build terminal‑style UIs, mapping tools, and moody sci‑fi worlds.",
+          "Stack: React, Node, Postgres, Go, ArcGIS Pro, Blender, Godot.",
+        ]);
+        break;
+      case "projects":
+        print(projects.map((p) => `• ${p.name} — ${p.tag} — ${p.link}`));
+        break;
+      case "contact":
+        print([
+          "Email: hello@example.com",
+          "GitHub: https://github.com/your-handle",
+          "X: https://x.com/your-handle",
+        ]);
+        break;
+      case "theme": {
+        const choice = args[0];
+        if (["green", "amber", "ice"].includes(choice)) {
+          setTheme(choice);
+          print(`Theme set to ${choice}.`);
+        } else {
+          print("Usage: theme [green|amber|ice]");
+        }
+        break;
+      }
+      case "clear":
+        clear();
+        break;
+      default:
+        print(`Command not found: ${name}. Type 'help'.`);
+    }
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    handleCommand(input);
+    setInput("");
+  };
+
+  return (
+    <div className="text-sm leading-relaxed">
+      <div className="space-y-1 min-h-[45vh]">
+        {history.map((line, i) => (
+          <Line key={i} text={line} accentClass={palette} />
+        ))}
+      </div>
+
+      <form onSubmit={onSubmit} className="mt-3 flex items-center gap-2">
+        <span className={`select-none ${palette}`}>$</span>
+        <input
+          ref={inputRef}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          className="flex-1 bg-transparent outline-none placeholder-terminal-dim"
+          placeholder="type a command… (try: help)"
+          autoComplete="off"
+        />
+        <button
+          type="submit"
+          className="px-2 py-1 rounded border border-white/10 hover:border-white/20"
+        >
+          run
+        </button>
+      </form>
+    </div>
+  );
+}
+
+function Line({ text, accentClass }) {
+  // very small ANSI color shim for demo: only bright green sequence used above
+  const html = text
+    .replace(/\u001b\[38;2;0;255;153m/g, `<span class="${accentClass}">`)
+    .replace(/\u001b\[0m/g, "</span>");
+
+  return (
+    <div
+      className="whitespace-pre-wrap"
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
+}
