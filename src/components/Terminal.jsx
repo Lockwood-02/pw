@@ -1,7 +1,7 @@
 import React from "react";
 
 const initialBanner = [
-  "Welcome to Isaac's Terminal Portfolio",
+  "Welcome to Isaac's Personal Website",
   "Type \u001b[38;2;0;255;153mhelp\u001b[0m to get started.",
 ];
 
@@ -39,55 +39,71 @@ export default function Terminal() {
     ice: "text-[#80eaff]",
   }[theme];
 
-  const handleCommand = (raw) => {
-    if (!cmd) return;
-    print(`$ ${cmd}`);
-
-    const [name, ...args] = cmd.split(/\s+/);
-    switch (name.toLowerCase()) {
-      case "help":
+  const commands = {
+    help: {
+      description: "- Show available commands",
+      run: () => {
         print([
-          "Available commands:",
-          " help Show this help",
-          " about About me",
-          " projects Featured projects",
-          " contact How to reach me",
-          " theme [green|amber|ice] Switch accent color",
-          " clear Clear the screen",
+          ...Object.entries(commands).map(
+            ([name, { description }]) => ` ${name} ${description}`
+          ),
         ]);
-        break;
-      case "about":
+      },
+    },
+    "about": {
+      description: "- About me",
+      run: () => {
         print([
           "Isaac Lockwood — Full‑stack dev & GIS tinkerer.",
           "I build terminal‑style UIs, mapping tools, and moody sci‑fi worlds.",
           "Stack: React, Node, Postgres, Go, ArcGIS Pro, Blender, Godot.",
         ]);
-        break;
-      case "projects":
+      },
+    },
+    "projects": {
+      description: "- Featured projects",
+      run: () => {
         print(projects.map((p) => `• ${p.name} — ${p.tag} — ${p.link}`));
-        break;
-      case "contact":
+      },
+    },
+    "contact": {
+      description: "- How to reach me",
+      run: () => {
         print([
           "Email: hello@example.com",
           "GitHub: https://github.com/your-handle",
           "X: https://x.com/your-handle",
         ]);
-        break;
-      case "theme": {
-        const choice = args[0];
+      },
+    },
+    "theme": {
+      description: "- [green|amber|ice] Switch accent color",
+      run: ([choice]) => {
         if (["green", "amber", "ice"].includes(choice)) {
           setTheme(choice);
           print(`Theme set to ${choice}.`);
         } else {
           print("Usage: theme [green|amber|ice]");
         }
-        break;
-      }
-      case "clear":
-        clear();
-        break;
-      default:
-        print(`Command not found: ${name}. Type 'help'.`);
+      },
+    },
+    clear: {
+      description: "- Clear the screen",
+      run: clear,
+    },
+  };
+
+  const handleCommand = (raw) => {
+    const cmd = raw.trim();
+    if (!cmd) return;
+    print(`$ ${cmd}`);
+
+    const [name, ...args] = cmd.split(/\s+/);
+    const command = commands[name.toLowerCase()];
+    if (command) {
+      command.run(args);
+    } else {
+      print(`Command not found: ${name}. Type 'help'.`);
     }
   };
 
