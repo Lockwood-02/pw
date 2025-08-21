@@ -19,10 +19,11 @@ const projects = [
   },
 ];
 
-export default function Terminal() {
-  const [history, setHistory] = React.useState(initialBanner);
+export default function Terminal({ theme, setTheme }) {
+    const [history, setHistory] = React.useState(
+      initialBanner.map((text) => ({ type: "line", text }))
+    );
   const [input, setInput] = React.useState("");
-  const [theme, setTheme] = React.useState("green"); // green | amber | ice
   const inputRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -30,7 +31,12 @@ export default function Terminal() {
   }, []);
 
   const print = (lines) =>
-    setHistory((h) => [...h, ...(Array.isArray(lines) ? lines : [lines])]);
+    setHistory((h) => [
+        ...h,
+        ...(Array.isArray(lines) ? lines : [lines]).map((line) =>
+          typeof line === "string" ? { type: "line", text: line } : line
+        ),
+      ]);
   const clear = () => setHistory([]);
 
   const palette = {
@@ -96,7 +102,7 @@ export default function Terminal() {
   const handleCommand = (raw) => {
     const cmd = raw.trim();
     if (!cmd) return;
-    print(`$ ${cmd}`);
+    print({ type: "cmd", text: cmd });
 
     const [name, ...args] = cmd.split(/\s+/);
     const command = commands[name.toLowerCase()];
@@ -116,13 +122,17 @@ export default function Terminal() {
   return (
     <div className="text-sm leading-relaxed">
       <div className="space-y-1 min-h-[45vh]">
-        {history.map((line, i) => (
-          <Line key={i} text={line} accentClass={palette} />
-        ))}
+      {history.map((item, i) =>
+          item.type === "cmd" ? (
+            <CommandLine key={i} text={item.text} accentClass={palette} />
+          ) : (
+            <Line key={i} text={item.text} accentClass={palette} />
+          )
+        )}
       </div>
 
       <form onSubmit={onSubmit} className="mt-3 flex items-center gap-2">
-        <span className={`select-none ${palette}`}>$</span>
+        <span className={`select-none ${palette}`}>guest@terminal:</span>
         <input
           ref={inputRef}
           value={input}
@@ -142,10 +152,21 @@ export default function Terminal() {
   );
 }
 
+function CommandLine({ text, accentClass }) {
+    return (
+      <div className="whitespace-pre-wrap">
+        <span className={`select-none ${accentClass}`}>guest@terminal: </span>
+        {text}
+      </div>
+    );
+  }
+
 function Line({ text, accentClass }) {
   // very small ANSI color shim for demo: only bright green sequence used above
   const html = text
+  // eslint-disable-next-line no-control-regex
     .replace(/\u001b\[38;2;0;255;153m/g, `<span class="${accentClass}">`)
+    // eslint-disable-next-line no-control-regex
     .replace(/\u001b\[0m/g, "</span>");
 
   return (
