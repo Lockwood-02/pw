@@ -1,14 +1,22 @@
 import React from "react";
 import Terminal from "./components/Terminal.jsx";
+import Home from "./components/Home.jsx"
 
 export default function App() {
   const [theme, setTheme] = React.useState("green");
+  const [screen, setScreen] = React.useState("home");
+  const [startCmd, setStartCmd] = React.useState("");
 
   const glow = {
     green: "shadow-glow-green",
     amber: "shadow-glow-amber",
     ice: "shadow-glow-ice",
   }[theme];
+
+  const openTerminal = (cmd = "") => {
+    setStartCmd(cmd);
+    setScreen("terminal");
+  };
 
   return (
     <div className="min-h-full grid place-items-center p-4">
@@ -26,7 +34,20 @@ export default function App() {
           </div>
         </header>
         <div className="p-4">
-          <Terminal theme={theme} setTheme={setTheme} />
+          {screen === "home" ? (
+            <Home
+              theme={theme}
+              onEnter={() => openTerminal()}
+              onCommand={(cmd) => openTerminal(cmd)}
+            />
+          ) : (
+            <Terminal
+              theme={theme}
+              setTheme={setTheme}
+              startWith={startCmd}
+              onHome={() => setScreen("home")}
+            />
+          )}
         </div>
       </div>
     </div>

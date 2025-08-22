@@ -19,10 +19,10 @@ const projects = [
   },
 ];
 
-export default function Terminal({ theme, setTheme }) {
-    const [history, setHistory] = React.useState(
-      initialBanner.map((text) => ({ type: "line", text }))
-    );
+export default function Terminal({ theme, setTheme, startWith, onHome }) {
+  const [history, setHistory] = React.useState(
+    initialBanner.map((text) => ({ type: "line", text }))
+  );
   const [input, setInput] = React.useState("");
   const inputRef = React.useRef(null);
 
@@ -56,7 +56,7 @@ export default function Terminal({ theme, setTheme }) {
         ]);
       },
     },
-    "about": {
+    about: {
       description: "- About me",
       run: () => {
         print([
@@ -66,13 +66,38 @@ export default function Terminal({ theme, setTheme }) {
         ]);
       },
     },
-    "projects": {
+    home: {
+      description: "- Return to the Home screen",
+      run: () => {
+        if (typeof onHome === "function") onHome();
+      },
+    },
+    favorites: {
+      description: "- Favorite tools & media",
+      run: () => {
+        print([
+          "Book: Neuromancer",
+          "Editor: Vim",
+          "Color: #00ff99",
+        ]);
+      },
+    },
+    research: {
+      description: "- Research interests",
+      run: () => {
+        print([
+          "Real-time GIS visualization",
+          "Procedural city generation",
+        ]);
+      },
+    },
+    projects: {
       description: "- Featured projects",
       run: () => {
         print(projects.map((p) => `• ${p.name} — ${p.tag} — ${p.link}`));
       },
     },
-    "contact": {
+    contact: {
       description: "- How to reach me",
       run: () => {
         print([
@@ -82,7 +107,7 @@ export default function Terminal({ theme, setTheme }) {
         ]);
       },
     },
-    "theme": {
+    theme: {
       description: "- [green|amber|ice] Switch accent color",
       run: ([choice]) => {
         if (["green", "amber", "ice"].includes(choice)) {
@@ -118,6 +143,13 @@ export default function Terminal({ theme, setTheme }) {
     handleCommand(input);
     setInput("");
   };
+
+  React.useEffect(() => {
+    if (startWith) {
+      handleCommand(startWith);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [startWith]);
 
   return (
     <div className="text-sm leading-relaxed">
