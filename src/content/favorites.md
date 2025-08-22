@@ -1,5 +1,5 @@
 # Favorites
 
-Book: Neuromancer
-Editor: Vim
-Color: #00ff99
+- **Book:** Neuromancer
+- **Editor:** Vim
+- **Color:** #00ff99

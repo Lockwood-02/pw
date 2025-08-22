@@ -3,6 +3,7 @@ import aboutMd from "../content/about.md?raw";
 import favoritesMd from "../content/favorites.md?raw";
 import projectsDir from "./Projects.jsx";
 import blogsDir from "./Blogs.jsx";
+import FileViewer from "./FileViewer.jsx";
 
 const initialBanner = [
   "Welcome to Isaac's Personal Website",
@@ -25,11 +26,18 @@ export default function Terminal({ theme, setTheme, startWith, onHome }) {
   );
   const [input, setInput] = React.useState("");
   const [path, setPath] = React.useState([]);
+  const [viewer, setViewer] = React.useState(null);
   const inputRef = React.useRef(null);
 
   React.useEffect(() => {
     inputRef.current?.focus();
   }, []);
+
+  React.useEffect(() => {
+    if (!viewer) {
+      inputRef.current?.focus();
+    }
+  }, [viewer]);
 
   const print = (lines) =>
     setHistory((h) => [
@@ -110,6 +118,19 @@ export default function Terminal({ theme, setTheme, startWith, onHome }) {
         if (typeof onHome === "function") onHome();
       },
     },
+    nano: {
+      description: "- Open file in editor",
+      run: ([file]) => {
+        const current = getNode(path);
+        const node = current?.contents?.[file];
+        if (node?.type === "file") {
+          setViewer({ filename: file, content: node.content });
+          inputRef.current?.blur();
+        } else {
+          print(`File not found: ${file}`);
+        }
+      },
+    },
     theme: {
       description: "- [green|amber|ice] Switch accent color",
       run: ([choice]) => {
@@ -157,43 +178,70 @@ export default function Terminal({ theme, setTheme, startWith, onHome }) {
 
   const promptPath = "/" + path.join("/");
 
-  return (
-    <div className="text-sm leading-relaxed">
-      <div className="space-y-1 min-h-[45vh]">
-        {history.map((item, i) =>
-          item.type === "cmd" ? (
-            <CommandLine
-              key={i}
-              text={item.text}
-              path={item.path}
-              accentClass={palette}
-            />
-          ) : (
-            <Line key={i} text={item.text} accentClass={palette} />
-          )
-        )}
-      </div>
+  if (viewer) {
+    return (
+      <FileViewer
+        filename={viewer.filename}
+        content={viewer.content}
+        accentClass={palette}
+        onClose={() => {
+          setViewer(null);
+          setTimeout(inputRef.current?.focus(), 0);
+        }}
+      />
+    );
+  }
 
-      <form onSubmit={onSubmit} className="mt-3 flex items-center gap-2">
-        <span className={`select-none ${palette}`}>
-          guest@terminal:{promptPath}
-        </span>
-        <input
-          ref={inputRef}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          className="flex-1 bg-transparent outline-none placeholder-terminal-dim"
-          placeholder="type a command… (try: help)"
-          autoComplete="off"
+  return (
+    <>
+      {viewer && (
+        <FileViewer
+          filename={viewer.filename}
+          content={viewer.content}
+          accentClass={palette}
+          onClose={() => {
+            setViewer(null);
+            setTimeout(inputRef.current?.focus(), 0);
+          }}
         />
-        <button
-          type="submit"
-          className="px-2 py-1 rounded border border-white/10 hover:border-white/20"
-        >
-          run
-        </button>
-      </form>
-    </div>
+        )}
+      <div className="text-sm leading-relaxed">
+        <div className="space-y-1 min-h-[45vh]">
+          {history.map((item, i) =>
+            item.type === "cmd" ? (
+              <CommandLine
+                key={i}
+                text={item.text}
+                path={item.path}
+                accentClass={palette}
+              />
+            ) : (
+              <Line key={i} text={item.text} accentClass={palette} />
+            )
+          )}
+        </div>
+
+        <form onSubmit={onSubmit} className="mt-3 flex items-center gap-2">
+          <span className={`select-none ${palette}`}>
+            guest@terminal:{promptPath}
+          </span>
+          <input
+            ref={inputRef}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className="flex-1 bg-transparent outline-none placeholder-terminal-dim"
+            placeholder="type a command… (try: help)"
+            autoComplete="off"
+          />
+          <button
+            type="submit"
+            className="px-2 py-1 rounded border border-white/10 hover:border-white/20"
+          >
+            run
+          </button>
+        </form>
+      </div>
+    </>
   );
 }
 
