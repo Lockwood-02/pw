@@ -30,7 +30,7 @@ export default function App() {
             <span className="h-3 w-3 rounded-full bg-green-400/60"></span>
           </div>
           <div className="ml-3 text-terminal-dim text-xs">
-            ~/terminal-portfolio
+            ~/isaaclockwood.dev
           </div>
         </header>
         <div className="p-4">
