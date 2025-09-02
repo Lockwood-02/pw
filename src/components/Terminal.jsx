@@ -74,13 +74,16 @@ export default function Terminal({ theme, setTheme, startWith, onHome }) {
     },
     ls: {
       description: "- List files and directories",
-      run: () => {
-        const dir = getNode(path);
-        if (dir?.type === "dir") {
-          const names = Object.entries(dir.contents).map(([name, item]) =>
+      run: ([dir]) => {
+        const segments = dir ? dir.split("/").filter(Boolean) : [];
+        const target = getNode([...path, ...segments]);
+        if (target?.type === "dir") {
+          const names = Object.entries(target.contents).map(([name, item]) =>
             item.type === "dir" ? name + "/" : name
           );
           print(names);
+        } else if (dir) {
+          print(`Directory not found: ${dir}`);
         }
       },
     },
@@ -88,17 +91,23 @@ export default function Terminal({ theme, setTheme, startWith, onHome }) {
       description: "- Change directory",
       run: ([dir]) => {
         if (!dir) return;
-        if (dir === "..") {
-          setPath((p) => p.slice(0, -1));
-          return;
+        const segments = dir.split("/").filter(Boolean);
+        let newPath = [...path];
+        for (const segment of segments) {
+          if (segment === "..") {
+            newPath = newPath.slice(0, -1);
+            continue;
+          }
+          const current = getNode(newPath);
+          const next = current?.contents?.[segment];
+          if (next?.type === "dir") {
+            newPath.push(segment);
+          } else {
+            print(`Directory not found: ${dir}`);
+            return;
+          }
         }
-        const current = getNode(path);
-        const next = current?.contents?.[dir];
-        if (next?.type === "dir") {
-          setPath((p) => [...p, dir]);
-        } else {
-          print(`Directory not found: ${dir}`);
-        }
+        setPath(newPath);
       },
     },
     home: {
@@ -110,10 +119,13 @@ export default function Terminal({ theme, setTheme, startWith, onHome }) {
     nano: {
       description: "- Open file in editor",
       run: ([file]) => {
-        const current = getNode(path);
-        const node = current?.contents?.[file];
+        if (!file) return;
+        const segments = file.split("/").filter(Boolean);
+        const filename = segments.pop();
+        const dir = getNode([...path, ...segments]);
+        const node = dir?.contents?.[filename];
         if (node?.type === "file") {
-          setViewer({ filename: file, content: node.content });
+          setViewer({ filename, content: node.content });
           inputRef.current?.blur();
         } else {
           print(`File not found: ${file}`);

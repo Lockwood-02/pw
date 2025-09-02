@@ -1,7 +1,11 @@
 import React from "react";
 
 export default function FileViewer({ filename, content, onClose, accentClass }) {
-  const html = React.useMemo(() => renderMarkdown(content, accentClass), [content, accentClass]);
+  const isMarkdown = filename.endsWith(".md");
+  const html = React.useMemo(
+    () => (isMarkdown ? renderMarkdown(content, accentClass) : content),
+    [content, accentClass, isMarkdown]
+  );
 
   React.useEffect(() => {
     const handleKey = (e) => {
