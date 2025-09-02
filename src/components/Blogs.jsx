@@ -13,7 +13,7 @@ export const blogIndex = [
 // Import every HTML file in the content/blogs directory tree. The eager option
 // pulls in the file contents at build time so the terminal can display them
 // without additional fetches.
-const blogFiles = import.meta.glob("../content/blogs/*/*.html", {
+const blogFiles = import.meta.glob("../content/blogs/*/*.md", {
   query: "?raw",
   import: "default",
   eager: true,
