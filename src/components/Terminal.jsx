@@ -52,6 +52,7 @@ export default function Terminal({ theme, setTheme, startWith, onHome }) {
     green: "text-[#00ff99]",
     amber: "text-terminal-warning",
     ice: "text-[#80eaff]",
+    red: "text-[#ff425f]",
   }[theme];
 
   const getNode = (segments) =>
@@ -132,13 +133,13 @@ export default function Terminal({ theme, setTheme, startWith, onHome }) {
       },
     },
     theme: {
-      description: "- [green|amber|ice] Switch accent color",
+      description: "- [green|amber|ice|red] Switch accent color",
       run: ([choice]) => {
-        if (["green", "amber", "ice"].includes(choice)) {
+        if (["green", "amber", "ice", "red"].includes(choice)) {
           setTheme(choice);
           print(`Theme set to ${choice}.`);
         } else {
-          print("Usage: theme [green|amber|ice]");
+          print("Usage: theme [green|amber|ice|red]");
         }
       },
     },

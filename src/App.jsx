@@ -11,6 +11,7 @@ export default function App() {
     green: "shadow-glow-green",
     amber: "shadow-glow-amber",
     ice: "shadow-glow-ice",
+    red: "shadow-glow-red",
   }[theme];
 
   const openTerminal = (cmd = "") => {
