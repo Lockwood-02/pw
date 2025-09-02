@@ -101,18 +101,6 @@ export default function Terminal({ theme, setTheme, startWith, onHome }) {
         }
       },
     },
-    cat: {
-      description: "- Print file contents",
-      run: ([file]) => {
-        const current = getNode(path);
-        const node = current?.contents?.[file];
-        if (node?.type === "file") {
-          print(node.content.split(/\r?\n/));
-        } else {
-          print(`File not found: ${file}`);
-        }
-      },
-    },
     home: {
       description: "- Return to the Home screen",
       run: () => {
