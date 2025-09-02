@@ -1,6 +1,9 @@
 import React from "react";
+import { Routes, Route } from "react-router";
 import Terminal from "./components/Terminal.jsx";
-import Home from "./components/Home.jsx"
+import Home from "./components/Home.jsx";
+import BlogYear from "./components/BlogYear.jsx";
+import BlogPost from "./components/BlogPost.jsx";
 
 export default function App() {
   const [theme, setTheme] = React.useState("green");
@@ -35,20 +38,25 @@ export default function App() {
           </div>
         </header>
         <div className="p-4">
-          {screen === "home" ? (
-            <Home
-              theme={theme}
-              onEnter={() => openTerminal()}
-              onCommand={(cmd) => openTerminal(cmd)}
+          <Routes>
+            <Route
+              path="/"
+              element={
+                screen === "home" ? (
+                  <Home theme={theme} onEnter={() => openTerminal()} />
+                ) : (
+                  <Terminal
+                    theme={theme}
+                    setTheme={setTheme}
+                    startWith={startCmd}
+                    onHome={() => setScreen("home")}
+                  />
+                )
+              }
             />
-          ) : (
-            <Terminal
-              theme={theme}
-              setTheme={setTheme}
-              startWith={startCmd}
-              onHome={() => setScreen("home")}
-            />
-          )}
+            <Route path="/blogs/:year" element={<BlogYear theme={theme} />} />
+            <Route path="/blogs/:year/:file" element={<BlogPost theme={theme} />} />
+          </Routes>
         </div>
       </div>
     </div>
