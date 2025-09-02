@@ -1,4 +1,5 @@
 import React from "react";
+import { blogIndex } from "./Blogs.jsx";
 
 export default function Home({ theme, onEnter, onCommand }) {
   const accent = {
@@ -7,13 +8,6 @@ export default function Home({ theme, onEnter, onCommand }) {
     ice: "text-[#80eaff]",
     red: "text-[#Ff4e4e]",
   }[theme];
-
-  const glyphs = [
-    { char: "Δ", cmd: "about",     color: "text-[#7ee787]" },  // mint/green
-    { char: "Ω", cmd: "favorites", color: "text-[#79c0ff]" },  // blue
-    { char: "λ", cmd: "research",  color: "text-[#ffa657]" },  // orange
-    { char: "θ", cmd: "projects",  color: "text-[#Ff4e4e]" },  // red
-  ];
 
 
   React.useEffect(() => {
@@ -50,26 +44,26 @@ export default function Home({ theme, onEnter, onCommand }) {
         We do what we must, because we can
       </p>
       <div className="flex justify-center gap-10 select-none">
-        {[
-          { char: "Δ", cmd: "about",     color: "text-[#7ee787]", year: 2028 },  // mint/green
-          { char: "Ω", cmd: "favorites", color: "text-[#79c0ff]", year: 2027 },  // blue
-          { char: "λ", cmd: "research",  color: "text-[#ffa657]", year: 2026 },  // orange
-          { char: "θ", cmd: "projects",  color: "text-[#Ff4e4e]", year: 2025 },  // red
-        ].map((g) => (
-          <button
-            key={g.char}
-            onClick={() => onCommand(g.cmd)}
-            className="group flex flex-col items-center gap-1 bg-transparent cursor-pointer focus:outline-none"
-            aria-label={`${g.cmd} (${g.year})`}
-          >
-            <span className={`text-4xl leading-none ${g.color} group-hover:opacity-90`}>
-              {g.char}
-            </span>
-            <span className="text-xs text-terminal-dim group-hover:opacity-100">
-              {g.year}
-            </span>
-          </button>
-        ))}
+        {blogIndex
+          .slice()
+          .reverse()
+          .map((g) => (
+            <button
+              key={g.year}
+              onClick={() => onCommand(`cd blogs/${g.year}`)}
+              className="group flex flex-col items-center gap-1 bg-transparent cursor-pointer focus:outline-none"
+              aria-label={`blogs ${g.year}`}
+            >
+              <span
+                className={`text-4xl leading-none ${g.color} group-hover:opacity-90`}
+              >
+                {g.glyph}
+              </span>
+              <span className="text-xs text-terminal-dim group-hover:opacity-100">
+                {g.year}
+              </span>
+            </button>
+          ))}
       </div>
 
 
