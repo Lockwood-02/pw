@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router";
 import { blogIndex } from "./Blogs.jsx";
 
-export default function Home({ theme, onEnter, onCommand }) {
+export default function Home({ theme, onEnter }) {
   const accent = {
     green: "text-[#00ff99]",
     amber: "text-terminal-warning",
@@ -25,15 +26,6 @@ export default function Home({ theme, onEnter, onCommand }) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [onEnter]);
 
-  const LinkButton = ({ cmd, children }) => (
-    <button
-      onClick={() => onCommand(cmd)}
-      className={`hover:underline text-left ${accent}`}
-    >
-      {children}
-    </button>
-  );
-
   return (
     <div className="text-sm leading-relaxed text-center space-y-6">
       <div>
@@ -48,9 +40,9 @@ export default function Home({ theme, onEnter, onCommand }) {
           .slice()
           .reverse()
           .map((g) => (
-            <button
+            <Link
               key={g.year}
-              onClick={() => onCommand(`cd blogs/${g.year}`)}
+              to={`/blogs/${g.year}`}
               className="group flex flex-col items-center gap-1 bg-transparent cursor-pointer focus:outline-none"
               aria-label={`blogs ${g.year}`}
             >
@@ -62,17 +54,9 @@ export default function Home({ theme, onEnter, onCommand }) {
               <span className="text-xs text-terminal-dim group-hover:opacity-100">
                 {g.year}
               </span>
-            </button>
+            </Link>
           ))}
       </div>
-
-
-      {/* <div className="grid justify-center gap-1">
-        <LinkButton cmd="about">/about →</LinkButton>
-        <LinkButton cmd="favorites">/favorites →</LinkButton>
-        <LinkButton cmd="research">/research →</LinkButton>
-        <LinkButton cmd="projects">/projects →</LinkButton>
-      </div> */}
       <div className="pt-4">
         <button
           onClick={() => onEnter()}
