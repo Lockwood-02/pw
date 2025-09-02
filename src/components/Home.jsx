@@ -35,6 +35,27 @@ export default function Home({ theme, onEnter }) {
       <p className="text-terminal-dim italic">
         We do what we must, because we can
       </p>
+
+      {/* <svg
+        viewBox="0 0 532 532"
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-8 h-8 mx-auto"
+      >
+        <g id="a">
+          <g id="b">
+            <path
+              id="c"
+              d="m165 32c-57 24-105 69-131 127l248-46"
+              fill="white"
+            />
+            <use transform="rotate(45,266,266)" xlinkHref="#c" />
+          </g>
+          <use transform="rotate(90,266,266)" xlinkHref="#b" />
+        </g>
+        <use transform="rotate(180,266,266)" xlinkHref="#a" />
+      </svg> */}
+
+
       <div className="flex justify-center gap-10 select-none">
         {blogIndex
           .slice()
