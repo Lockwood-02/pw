@@ -29,8 +29,8 @@ export default function Home({ theme, onEnter }) {
   return (
     <div className="text-sm leading-relaxed text-center space-y-6">
       <div>
-        <pre className={`font-mono text-4xl leading-none ${accent}`}>{String.raw`::
-/ L`}</pre>
+        <pre className={`font-mono text-4xl leading-none ${accent}`}>{String.raw` / /
+ / /_`}</pre>
       </div>
       <p className="text-terminal-dim italic">
         We do what we must, because we can
