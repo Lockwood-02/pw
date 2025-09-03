@@ -78,12 +78,20 @@ export default function Home({ theme, onEnter }) {
             </Link>
           ))}
       </div>
+      <div className="flex justify-center gap-6 pt-2">
+        <Link to="/about" className={`hover:underline ${accent}`}>
+          About Me
+        </Link>
+        <Link to="/interests" className={`hover:underline ${accent}`}>
+          Interests
+        </Link>
+      </div>
       <div className="pt-4">
         <button
           onClick={() => onEnter()}
           className="px-3 py-1 rounded border border-white/10 hover:border-white/20"
         >
-          enter terminal
+          enter terminal mode
         </button>
       </div>
     </div>
