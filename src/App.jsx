@@ -4,6 +4,8 @@ import Terminal from "./components/Terminal.jsx";
 import Home from "./components/Home.jsx";
 import BlogYear from "./components/BlogYear.jsx";
 import BlogPost from "./components/BlogPost.jsx";
+import About from "./components/About.jsx";
+import Interests from "./components/Interests.jsx";
 
 export default function App() {
   const [theme, setTheme] = React.useState("green");
@@ -56,6 +58,8 @@ export default function App() {
             />
             <Route path="/blogs/:year" element={<BlogYear theme={theme} />} />
             <Route path="/blogs/:year/:file" element={<BlogPost theme={theme} />} />
+            <Route path="/about" element={<About theme={theme} />} />
+            <Route path="/interests" element={<Interests theme={theme} />} />
           </Routes>
         </div>
       </div>

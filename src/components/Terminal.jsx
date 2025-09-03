@@ -1,6 +1,7 @@
 import React from "react";
 import aboutMd from "../content/about.md?raw";
 import favoritesMd from "../content/favorites.md?raw";
+import interestsMd from "../content/interests.md?raw";
 import projectsDir from "./Projects.jsx";
 import blogsDir from "./Blogs.jsx";
 import FileViewer from "./FileViewer.jsx";
@@ -15,6 +16,7 @@ const fileTree = {
   contents: {
     "about.md": { type: "file", content: aboutMd },
     "favorites.md": { type: "file", content: favoritesMd },
+    "interests.md": { type: "file", content: interestsMd },
     projects: projectsDir,
     blogs: blogsDir,
   },
