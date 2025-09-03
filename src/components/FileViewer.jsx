@@ -79,10 +79,8 @@ function renderMarkdown(md, accentClass) {
     );
 
     // _italics_
-    text = text.replace(
-      /_(.+?)_/g,
-      `<em class="italic">$1</em>`
-    );
+    text = text.replace(/(?<!\\)_(.+?)(?<!\\)_/g, `<em class="italic">$1</em>`);
+    text = text.replace(/\\_/g, "_");
 
     // [label](url)
     text = text.replace(
