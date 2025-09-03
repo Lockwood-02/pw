@@ -78,6 +78,12 @@ function renderMarkdown(md, accentClass) {
       `<strong class="${accentClass}">$1</strong>`
     );
 
+    // _italics_
+    text = text.replace(
+      /_(.+?)_/g,
+      `<em class="italic">$1</em>`
+    );
+
     // [label](url)
     text = text.replace(
       /\[(.+?)\]\((.+?)\)/g,
