@@ -91,7 +91,7 @@ export default function Home({ theme, onEnter }) {
           onClick={() => onEnter()}
           className="px-3 py-1 rounded border border-white/10 hover:border-white/20"
         >
-          enter terminal
+          enter terminal mode
         </button>
       </div>
     </div>
