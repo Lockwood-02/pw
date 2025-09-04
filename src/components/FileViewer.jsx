@@ -54,10 +54,7 @@ function renderMarkdown(md, accentClass) {
     if (!inCode) return;
     const code = escapeHtml(codeLines.join("\n"));
     const langClass = codeLang ? `language-${codeLang}` : "";
-    html += `
-<pre class="mb-3 rounded-md border border-white/10 bg-black/40 p-3 overflow-x-auto">
-  <code class="font-mono text-xs ${langClass}">${code}</code>
-</pre>`;
+    html += `<pre class="mb-3 rounded-md border border-white/10 bg-black/40 p-3 overflow-x-auto"><code class="font-mono text-xs ${langClass}">${code}</code></pre>`;
     inCode = false;
     codeLang = "";
     codeLines = [];
@@ -78,6 +75,10 @@ function renderMarkdown(md, accentClass) {
       `<strong class="${accentClass}">$1</strong>`
     );
 
+    // _italics_
+    text = text.replace(/(?<!\\)_(.+?)(?<!\\)_/g, `<em class="italic">$1</em>`);
+    text = text.replace(/\\_/g, "_");
+
     // [label](url)
     text = text.replace(
       /\[(.+?)\]\((.+?)\)/g,
@@ -86,6 +87,8 @@ function renderMarkdown(md, accentClass) {
 
     return text;
   };
+
+  let lastWasH1 = false;
 
   lines.forEach((raw) => {
     // Handle fenced code start/end: ```lang
@@ -114,6 +117,11 @@ function renderMarkdown(md, accentClass) {
       html += `<h1 class="text-xl font-bold mb-4">${inline(
         raw.replace(/^#\s+/, "")
       )}</h1>`;
+      lastWasH1 = true;
+    } else if (lastWasH1 && /^\d{2}-\d{2}-\d{4}$/.test(raw.trim())) {
+        // render a tiny subheading for the date
+        html += `<div class="text-[0.75rem] text-terminal-dim mb-3">${raw.trim()}</div>`;
+        lastWasH1 = false;
     } else if (/^##\s+/.test(raw)) {
       closeList();
       html += `<h2 class="text-lg font-bold mb-2">${inline(

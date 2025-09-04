@@ -10,10 +10,10 @@ export const blogIndex = [
   { year: "2028", glyph: "Δ", color: "text-[#7ee787]" },
 ];
 
-// Import every HTML file in the content/blogs directory tree. The eager option
-// pulls in the file contents at build time so the terminal can display them
-// without additional fetches.
-const blogFiles = import.meta.glob("../content/blogs/*/*.md", {
+// Import every markdown or HTML file in the content/blogs directory tree. The
+// eager option pulls in the file contents at build time so the terminal (and
+// the new browser pages) can display them without additional fetches.
+const blogFiles = import.meta.glob("../content/blogs/*/*.{md,html}", {
   query: "?raw",
   import: "default",
   eager: true,
