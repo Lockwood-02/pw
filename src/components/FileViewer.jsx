@@ -88,6 +88,8 @@ function renderMarkdown(md, accentClass) {
     return text;
   };
 
+  let lastWasH1 = false;
+
   lines.forEach((raw) => {
     // Handle fenced code start/end: ```lang
     const fence = raw.match(/^```(\s*([\w+-]+))?\s*$/);
@@ -115,6 +117,11 @@ function renderMarkdown(md, accentClass) {
       html += `<h1 class="text-xl font-bold mb-4">${inline(
         raw.replace(/^#\s+/, "")
       )}</h1>`;
+      lastWasH1 = true;
+    } else if (lastWasH1 && /^\d{2}-\d{2}-\d{4}$/.test(raw.trim())) {
+        // render a tiny subheading for the date
+        html += `<div class="text-[0.75rem] text-terminal-dim mb-3">${raw.trim()}</div>`;
+        lastWasH1 = false;
     } else if (/^##\s+/.test(raw)) {
       closeList();
       html += `<h2 class="text-lg font-bold mb-2">${inline(
