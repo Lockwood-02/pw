@@ -83,7 +83,7 @@ ca ca.crt
 cert mylaptop.crt
 key mylaptop.key
 ```
-**NOTE:** You need to copy over the ca.crt, mylaptop.crt, and mylaptop.key in order to have the credentials to the vpn. You can do this with the scp command from your client device. If you have fastfetch installed, you need to enable it only on interactive terminals or an error will occur saying the text returned was too long.
+**NOTE:** You need to copy over the **ca.crt**, **mylaptop.crt**, and **mylaptop.key** in order to have the credentials to the vpn. You can do this with the scp command from your client device. If you have fastfetch installed, you need to enable it only on interactive terminals or an error will occur saying the text returned was too long.
 **ANOTHER NOTE:** The **client.ovpn** _needs_ to be in the same folder as the **ca.crt**, **mylaptop.crt**, and **mylaptop.key** files (or whatever you decided to call them).
 
 Then to connect to the vpn simply run the command and pray it works:
