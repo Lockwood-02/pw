@@ -79,11 +79,19 @@ function renderMarkdown(md, accentClass) {
     text = text.replace(/(?<!\\)_(.+?)(?<!\\)_/g, `<em class="italic">$1</em>`);
     text = text.replace(/\\_/g, "_");
 
+    // ![alt](url)
+    text = text.replace(
+      /!\[([^\]]*)\]\(([^)]+)\)/g,
+      (_, alt, src) =>
+      `<img src="${src}" alt="${alt}" class="my-3 rounded-md border border-white/10 max-w-full" />`
+    );
+    
     // [label](url)
     text = text.replace(
       /\[(.+?)\]\((.+?)\)/g,
       `<a href="$2" class="${accentClass} underline" target="_blank" rel="noopener noreferrer">$1</a>`
     );
+
 
     return text;
   };

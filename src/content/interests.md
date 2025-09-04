@@ -3,8 +3,19 @@ Instead of keeping folders upon folders of bookmarks for things that I might be 
 
 Happy browsing!
 
+# SWE Tools
 
+# Techy Fun
+- [KBDFans](https://kbdfans.com/) - Gateway into mechanical keyboards
+- [geekhack](https://geekhack.org/index.php) - Old school forum for mechanical keyboards
+- [r/UnixPorn](https://www.reddit.com/r/unixporn/) - For Linux ricing inspiration
+- [Gruvbox Wallpapers](https://gruvbox-wallpapers.pages.dev/) - Linux aesthetic wallpapers
 
-- [Open Source Software](https://opensource.com)
-- [Machine Learning](https://en.wikipedia.org/wiki/Machine_learning)
-- [Creative Coding](https://thecodingtrain.com/)
+# Articles/Blogs
+- [Lexzaiello.com](https://lexzaiello.com/posts/nixos/) - A beautiful article about NixOS (and ricing)
+- [simple-homemanager](https://github.com/Evertras/simple-homemanager/tree/main) - A wonderful guide to getting started with home manager (I get lost a lot)
+- [A practical kickstart to home manager](https://discourse.nixos.org/t/a-practical-kickstart-to-home-manager/40180) - The original post for the guide ^
+
+# Break the Tech Market Barrier
+- [Leetcode](https://leetcode.com/) - Practice data structures & algorithms
+- [Levels.fyi](https://Levels.fyi) - Analyze the market
