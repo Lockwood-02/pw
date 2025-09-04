@@ -54,10 +54,7 @@ function renderMarkdown(md, accentClass) {
     if (!inCode) return;
     const code = escapeHtml(codeLines.join("\n"));
     const langClass = codeLang ? `language-${codeLang}` : "";
-    html += `
-<pre class="mb-3 rounded-md border border-white/10 bg-black/40 p-3 overflow-x-auto">
-  <code class="font-mono text-xs ${langClass}">${code}</code>
-</pre>`;
+    html += `<pre class="mb-3 rounded-md border border-white/10 bg-black/40 p-3 overflow-x-auto"><code class="font-mono text-xs ${langClass}">${code}</code></pre>`;
     inCode = false;
     codeLang = "";
     codeLines = [];
