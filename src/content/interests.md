@@ -4,6 +4,7 @@ Instead of keeping folders upon folders of bookmarks for things that I might be 
 Happy browsing!
 
 # SWE Tools
+- [Kibana](https://www.elastic.co/kibana) - Visualize large amounts of data/logs
 
 # Techy Fun
 - [KBDFans](https://kbdfans.com/) - Gateway into mechanical keyboards
