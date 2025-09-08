@@ -10,6 +10,7 @@ Happy browsing!
 - [geekhack](https://geekhack.org/index.php) - Old school forum for mechanical keyboards
 - [r/UnixPorn](https://www.reddit.com/r/unixporn/) - For Linux ricing inspiration
 - [Gruvbox Wallpapers](https://gruvbox-wallpapers.pages.dev/) - Linux aesthetic wallpapers
+- [Shodan.io](https://www.shodan.io/) - Search engine for internet connections
 
 # Articles/Blogs
 - [Lexzaiello.com](https://lexzaiello.com/posts/nixos/) - A beautiful article about NixOS (and ricing)

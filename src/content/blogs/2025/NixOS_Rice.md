@@ -1,5 +1,5 @@
 # NixOS_Rice
-09-04-2025
+09-06-2025
 I have always been semi-obsessed with [r/unixporn](https://www.reddit.com/r/unixporn/) (_I know that sounds weird it's not what you think_) but I have never been quite good at ricing my own system. I always end up breaking my distro and have to spend a linux evening on it. Originally, my first distro was Arch (**I _used_ arch btw**) and that was a _graveeee_ mistake. I was already on a path to building a second pc exclusively for linux, when Pewdiepie dropped his linux video out of nowhere. At the time, I was settled on **Fedora 42** as my distro but after watching his video, I was convinced to get **Arch** first.
 
 Now I am a little bit of a brainlet and thought that ChatGPT could help me get through the setup and ricing of my Arch system, and it did for the most part, but I felt like I knew _nothing_ about my own system. I was also still pretty uncomfortable with linux overall and Arch did not make it any easier. I was so lost and travelling down so many rabbit holes it was constant headache after headache and of course listening to ChatGPT spit out nonsense most of the time did NOT help those headaches. I decided to take a step back and remove arch and return to the orignal love I had for Fedora (I had never used it just seeing it in videos drew me to it).
@@ -32,3 +32,9 @@ I was able to rebuild and select hyprland as my DM (display manager) on login. T
 In that tutorial by Vimjoyer, he showed off a plugin for **borders-plus-plus** that was supposed to round out the borders of my applications and give them a color. However this was the result:
 ![MyPoorHyprland](/images/HyprlandSS.png)
 As you can see, they are about as round as an arrow.
+
+I decided instead, just so I can see what ricing can be like on my machine, to try and find a repository that helped guide me through the install of their flake files. I eventually came across one that I really liked made by [Sly-Harvey](https://github.com/Sly-Harvey/NixOS). It followed the theme of black holes (or others if you preffered), and had a really easy to follow setup guide. Simply just create a directory to store the repository in, configure the configuration file and the flake file to your system settings and drop in your hardware-configuration file and run an install script. Once that is done, restart the machine and you will be met with a gorgeous login screen as well as a hyprland setup.
+
+I know this isn't my own setup and I do plan on making my own when I better understand how to do so but for now, this is an enjoyable rice that I can work with. Until then, thats all for this one.
+
+GGs gamers!
