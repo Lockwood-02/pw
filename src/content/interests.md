@@ -17,6 +17,7 @@ Happy browsing!
 - [Lexzaiello.com](https://lexzaiello.com/posts/nixos/) - A beautiful article about NixOS (and ricing)
 - [simple-homemanager](https://github.com/Evertras/simple-homemanager/tree/main) - A wonderful guide to getting started with home manager (I get lost a lot)
 - [A practical kickstart to home manager](https://discourse.nixos.org/t/a-practical-kickstart-to-home-manager/40180) - The original post for the guide ^
+- [The Red Wheelbarrow](https://www.poetryfoundation.org/poems/45502/the-red-wheelbarrow) - A poem
 
 # Break the Tech Market Barrier
 - [Leetcode](https://leetcode.com/) - Practice data structures & algorithms
