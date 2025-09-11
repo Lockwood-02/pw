@@ -14,6 +14,7 @@ Happy browsing!
 - [Gruvbox Wallpapers](https://gruvbox-wallpapers.pages.dev/) - Linux aesthetic wallpapers
 - [Shodan.io](https://www.shodan.io/) - Search engine for internet connections
 - [FlipperZero](https://flipperzero.one/) - Really neat little hacker tool (I DO NOT CONDONE HACKING THAT IS NOT ETHICAL)
+- [Flipper Unleashed Firmware](https://github.com/DarkFlippers/unleashed-firmware) - A cracked firmware for the Flipper Zero device
 
 # Articles/Blogs
 - [Lexzaiello.com](https://lexzaiello.com/posts/nixos/) - A beautiful article about NixOS (and ricing)

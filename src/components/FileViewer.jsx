@@ -69,6 +69,12 @@ function renderMarkdown(md, accentClass) {
       )}</code>`
     );
 
+    // center block: ::center some text::
+    text = text.replace(
+      /::center\s+([\s\S]+?)::/g,
+      `<div class="text-center">$1</div>`
+    );
+
     // **bold**
     text = text.replace(
       /\*\*(.+?)\*\*/g,
