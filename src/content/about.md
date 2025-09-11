@@ -4,6 +4,3 @@ I'm **Isaac Lockwood** — full-stack dev & GIS tinkerer. I build terminal-style
 ## Links
 - [GitHub](https://github.com/Lockwood-02)
 - [LinkedIn](https://www.linkedin.com/in/isaac-lockwood)
-
-## Stack
-React, Node, Postgres, Go, ArcGIS Pro, SQL, Python.

@@ -5,6 +5,7 @@ Happy browsing!
 
 # SWE Tools
 - [Kibana](https://www.elastic.co/kibana) - Visualize large amounts of data/logs
+- [DevIcons](https://devicon.dev/) - Icons that developers can use in projects
 
 # Techy Fun
 - [KBDFans](https://kbdfans.com/) - Gateway into mechanical keyboards
@@ -12,12 +13,14 @@ Happy browsing!
 - [r/UnixPorn](https://www.reddit.com/r/unixporn/) - For Linux ricing inspiration
 - [Gruvbox Wallpapers](https://gruvbox-wallpapers.pages.dev/) - Linux aesthetic wallpapers
 - [Shodan.io](https://www.shodan.io/) - Search engine for internet connections
+- [FlipperZero](https://flipperzero.one/) - Really neat little hacker tool (I DO NOT CONDONE HACKING THAT IS NOT ETHICAL)
 
 # Articles/Blogs
 - [Lexzaiello.com](https://lexzaiello.com/posts/nixos/) - A beautiful article about NixOS (and ricing)
 - [simple-homemanager](https://github.com/Evertras/simple-homemanager/tree/main) - A wonderful guide to getting started with home manager (I get lost a lot)
 - [A practical kickstart to home manager](https://discourse.nixos.org/t/a-practical-kickstart-to-home-manager/40180) - The original post for the guide ^
 - [The Red Wheelbarrow](https://www.poetryfoundation.org/poems/45502/the-red-wheelbarrow) - A poem
+- [What the Flipper Can Do](https://nexttechworld.com/hobby-radio/flipper-zero-real-capabilities-legal-use-guide/) - A small article listing what the flipper zero is capable of
 
 # Break the Tech Market Barrier
 - [Leetcode](https://leetcode.com/) - Practice data structures & algorithms
