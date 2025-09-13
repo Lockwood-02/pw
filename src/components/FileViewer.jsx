@@ -62,42 +62,53 @@ function renderMarkdown(md, accentClass) {
 
   // inline formatting (bold, code, links) — not used inside code blocks
   const inline = (text) => {
-    // inline code first so we don't colorize inside backticks
+    // 1) inline code — protect contents from all other rules
     text = text.replace(/`([^`]+)`/g, (_, m) =>
-      `<code class="font-mono text-[0.85em] px-1 py-0.5 rounded bg-white/5 border border-white/10">${escapeHtml(
-        m
-      )}</code>`
+      `<code class="font-mono text-[0.85em] px-1 py-0.5 rounded bg-white/5 border border-white/10">${
+        m.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      }</code>`
     );
 
-    // center block: ::center some text::
+    // 2) center block: ::center ... ::
+    text = text.replace(/::center\s+([\s\S]+?)::/g, `<div class="text-center">$1</div>`);
+
+    // 3) images (must be before links)
+    // supports optional title: ![alt](url "Title")
     text = text.replace(
-      /::center\s+([\s\S]+?)::/g,
-      `<div class="text-center">$1</div>`
+      /!\[([^\]]*)\]\((\S+?)(?:\s+"([^"]+)")?\)/g,
+      (_, alt, src, title) =>
+        `<img src="${src}" alt="${alt}"${title ? ` title="${title}"` : ""} class="my-3 rounded-md border border-white/10 max-w-full inline-block align-[-2px]" />`
     );
 
-    // **bold**
+    // 4) bold — stricter so it won't jump across brackets/parentheses
     text = text.replace(
-      /\*\*(.+?)\*\*/g,
+      /\*\*([^*]+?)\*\*/g,
       `<strong class="${accentClass}">$1</strong>`
     );
 
-    // _italics_
-    text = text.replace(/(?<!\\)_(.+?)(?<!\\)_/g, `<em class="italic">$1</em>`);
+    // 5) italics with underscores — conservative & ignores escaped underscores
+    // won't cross brackets/parentheses/quotes
+    text = text.replace(
+      /(?<!\\)_(?!\s)([^_\[\]\(\)<>"]+?)(?<!\s)(?<!\\)_/g,
+      `<em class="italic">$1</em>`
+    );
+
+    // 6) unescape protected underscores last so \_ -> _ (after italic parsing)
     text = text.replace(/\\_/g, "_");
 
-    // ![alt](url)
+    // 7) links — after bold/italics so inline formatting doesn't touch HTML attrs
+    // supports optional title: [label](url "Title")
     text = text.replace(
-      /!\[([^\]]*)\]\(([^)]+)\)/g,
-      (_, alt, src) =>
-      `<img src="${src}" alt="${alt}" class="my-3 rounded-md border border-white/10 max-w-full" />`
-    );
-    
-    // [label](url)
-    text = text.replace(
-      /\[(.+?)\]\((.+?)\)/g,
-      `<a href="$2" class="${accentClass} underline" target="_blank" rel="noopener noreferrer">$1</a>`
+      /\[([^\]]+)\]\((\S+?)(?:\s+"([^"]+)")?\)/g,
+      (_, label, url, title) =>
+        `<a href="${url}" ${title ? `title="${title}" ` : ""}class="${accentClass} underline" target="_blank" rel="noopener noreferrer">${label}</a>`
     );
 
+    // 8) optional: auto-link bare URLs
+    text = text.replace(
+      /(?<!["'=])\bhttps?:\/\/[^\s)<]+/g,
+      (url) => `<a href="${url}" class="${accentClass} underline" target="_blank" rel="noopener noreferrer">${url}</a>`
+    );
 
     return text;
   };
