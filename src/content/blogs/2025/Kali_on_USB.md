@@ -1,0 +1,3 @@
+# Kali_on_USB
+09-12-2025
+About seven years ago, _lord I am getting old_, I dove into technically my first ever use of Linux, that being Kali linux. I had a gaming laptop and at the time, my family and I were travelling out west and I decided then would be my time to become the worlds greatest hacker. I spent a few days learning how to set up a vm and and run Kali as well as reading some documentation over how to crack WiFi. After a few hours of reading and testing, I was able to crack our camper WiFi (I was connected to my phones hotspot for this test). Also, **I DO NOT CONDONE CRACKING WIFI WITHOUT PERMISSION**.
