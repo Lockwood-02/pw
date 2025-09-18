@@ -22,6 +22,8 @@ Happy browsing!
 - [A practical kickstart to home manager](https://discourse.nixos.org/t/a-practical-kickstart-to-home-manager/40180) - The original post for the guide ^
 - [The Red Wheelbarrow](https://www.poetryfoundation.org/poems/45502/the-red-wheelbarrow) - A poem
 - [What the Flipper Can Do](https://nexttechworld.com/hobby-radio/flipper-zero-real-capabilities-legal-use-guide/) - A small article listing what the flipper zero is capable of
+- [How I'm Able to Take Notes in Mathematics Lectures Using LaTeX and Vim](https://castel.dev/post/lecture-notes-1/) - Taking notes in LaTeX and Vim (as it says)
+- [How I Draw Figures for my Mathematical Lecture Notes Using Inkscape](https://castel.dev/post/lecture-notes-2/) - A walkthrough of setting up figures in LaTeX
 
 # Break the Tech Market Barrier
 - [Leetcode](https://leetcode.com/) - Practice data structures & algorithms
