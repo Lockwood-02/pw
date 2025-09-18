@@ -25,3 +25,38 @@ cd Latex-Notes-Templates
 These templates give you a basic understanding of what we will be trying to accomplish in our own notetaking sessions. I am going to work on my own preamble.sty file to give a basic format that I enjoy with the knowledge I have learned from this repository.
 
 ## Setup Cont.
+The first thing I did was set up a github repository. This way, no matter where I am, I have access to these notes and can make changes from anywhere with a connection (or save some changes locally and update when connected). Next, I knew that LaTeX created a lot of output files based on the experimenting that I did with the repository, so I added the **.gitignore** to ignore the random trash that it outputs. 
+
+Next, I created a local **settings.json** file that would act as the repositories settings with LaTeX. This allowed me to also store all of the output files into an "out" folder within the notebook it is contained in. This just helps declutter the VSCode sidebar with a bunch of files and keeps it neat. You can find my settings file [here](https://github.com/Lockwood-02/LaTeX-Journal/blob/main/.vscode/settings.json) if you'd like.
+
+After that, I just made three sample notebooks for three different subjects. I tested out the LaTeX Workshop functionality and got everything working with the preamble. Below is what the file structure looks like:
+```
+LaTeX-Journal/
+├─ README.md
+├─ .gitignore
+├─ preamble/
+│  └─ journal-preamble.sty
+├─ .vscode/
+│  └─ settings.json
+├─ Mathematics/
+│  └─ Calculus/
+│     ├─ main.tex
+|     ├─ out/
+|     |  └─ *bunch of junk
+|     |  └─ main.pdf (This is the final note)
+│     └─ images/
+|        └─ example.jpg
+├─ Cyber-Security/
+│  └─ Blue-team-notes/
+│     ├─ main.tex
+│     └─ images/
+└─ Astro-Physics/
+   └─ Intro/
+      ├─ main.tex
+      └─ images/
+```
+
+When it comes to actually taking notes with LaTeX, I am quite inexperienced. This was more of a setup guide for you the reader (who is possibly me in the future after I forgot how to do this), and a starting point to my more _professional_ style notetaking. There are still some things that I want to incorporate into the LaTeX note taking style I am adopting such as graph and drawing integration, but that will come from later articles. For now, that Is all I have for you.
+
+Till next time,
+GGs gamers!

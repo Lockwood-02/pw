@@ -37,4 +37,5 @@ I decided instead, just so I can see what ricing can be like on my machine, to t
 
 I know this isn't my own setup and I do plan on making my own when I better understand how to do so but for now, this is an enjoyable rice that I can work with. Until then, thats all for this one.
 
+Till next time,
 GGs gamers!

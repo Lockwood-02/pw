@@ -12,4 +12,5 @@ I can see myself using Lint for quite some time. I have yet to experience an iss
 
 In an older article, I talked about setting up a VPN on my home network using OpenVPN. I am going to attempt to do that with this new install and hopefully get it working without spending a linux evening. Once that is done, and potentially even before its done, I want to connect and create an IRC channel for me and my friends to communicate on. Stay tuned for that one. With that, we're done!
 
+Till next time,
 GGs Gamers!
