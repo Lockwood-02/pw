@@ -15,6 +15,15 @@ Happy browsing!
 - [Shodan.io](https://www.shodan.io/) - Search engine for internet connections
 - [FlipperZero](https://flipperzero.one/) - Really neat little hacker tool (I DO NOT CONDONE HACKING THAT IS NOT ETHICAL)
 - [Flipper Unleashed Firmware](https://github.com/DarkFlippers/unleashed-firmware) - A cracked firmware for the Flipper Zero device
+- [censys.io](https://censys.com/) - Search engine for servers
+- [hunter.io](https://hunter.io/) - Search for emails
+- [urlscan.io](https://urlscan.io/) - URL and website scanner
+- [grep.app](https://grep.app/) - Search engine for code
+- [intelx.io](https://intelx.io/) - Search for records of information
+- [wigle.net](https://wigle.net/) - Wireless network mapping
+- [fullhunt.io](https://fullhunt.io/) - Expose your attack surfaces
+- [vulners.com](https://vulners.com/) - All-in-one vulnerability intelligence
+- [viz.greynoise.io](https://viz.greynoise.io/) - Expose IPs attempting to exploit services
 
 # Articles/Blogs
 - [Lexzaiello.com](https://lexzaiello.com/posts/nixos/) - A beautiful article about NixOS (and ricing)
