@@ -8,4 +8,11 @@ To give you an idea of what I am working with, below is a list of the specs that
 ```
 LIST OF SPECS HERE
 ```
-According to some online research, this appears to be a pretty good setup. I must note as well, you do not _need_ a super modern setup. From what I can tell, my system is a little overkill as it is scraps from an older gaming setup. You can definitely perform just as fine on some older hardware. I encourage you really to start with something old or cheap to see if you would be interested in something like this. If you find you do, then upgrading becomes a more enticing option. But for now, we are sticking with my old gaming setup. I will try and capture screenshots of the process as well and insert them here as well as linking my youtube when I get the chance. 
+According to some online research, this appears to be a pretty good setup. I must note as well, you do not _need_ a super modern setup. From what I can tell, my system is a little overkill as it is scraps from an older gaming setup. You can definitely perform just as fine on some older hardware. I encourage you really to start with something old or cheap to see if you would be interested in something like this. If you find you do, then upgrading becomes a more enticing option. But for now, we are sticking with my old gaming setup.
+
+To give some context on what I want to do with my home lab (since really you can do so so much), is to host a minecraft server first and foremost, then host some virtual development environment that I can mess around in. As I have said in some previous posts, I really want to get into pen testing and cracking down on understanding networking, threats, and defense mechanisms. Having these virtual environments gives me a playground to mess around in. I also want to host some media but that is not the main priority for now.
+
+With all of this in mind, lets begin our home lab setup.... in the next blog >:)
+
+Till next time,
+GGs Gamers!
