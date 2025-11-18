@@ -37,6 +37,7 @@ Happy browsing!
 - [How I Draw Figures for my Mathematical Lecture Notes Using Inkscape](https://castel.dev/post/lecture-notes-2/) - A walkthrough of setting up figures in LaTeX
 - [Homelab Beginner Guide](https://linuxblog.io/home-lab-beginners-guide-hardware/) - An article about starting a home lab setup
 - [What is a good way to start a home lab?](https://www.reddit.com/r/homelab/comments/q0dzd5/whatisagoodwaytostartahomelab) - A reddit post with valuable information about starting a home lab
+- [r/homelab Wiki](https://www.reddit.com/r/homelab/wiki/index) - A good starting place for home labbing with like minded individuals
 
 # Break the Tech Market Barrier
 - [Leetcode](https://leetcode.com/) - Practice data structures & algorithms
