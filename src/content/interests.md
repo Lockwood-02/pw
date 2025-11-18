@@ -24,6 +24,7 @@ Happy browsing!
 - [fullhunt.io](https://fullhunt.io/) - Expose your attack surfaces
 - [vulners.com](https://vulners.com/) - All-in-one vulnerability intelligence
 - [viz.greynoise.io](https://viz.greynoise.io/) - Expose IPs attempting to exploit services
+- [SeeedStudio](https://www.seeedstudio.com/?srsltid=AfmBOopmDXTfs6ImwKHAcgK19eeuDpn9NiP--wvKIUsxdJjxhyh-pitD) - A market for different open source hardware devices
 
 # Articles/Blogs
 - [Lexzaiello.com](https://lexzaiello.com/posts/nixos/) - A beautiful article about NixOS (and ricing)
