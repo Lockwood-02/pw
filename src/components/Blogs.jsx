@@ -5,9 +5,9 @@
 
 export const blogIndex = [
   { year: "2025", glyph: "θ", color: "text-[#Ff4e4e]" },
-  { year: "2026", glyph: "λ", color: "text-[#ffa657]" },
-  { year: "2027", glyph: "Ω", color: "text-[#79c0ff]" },
-  { year: "2028", glyph: "Δ", color: "text-[#7ee787]" },
+  // { year: "2026", glyph: "λ", color: "text-[#ffa657]" },
+  // { year: "2027", glyph: "Ω", color: "text-[#79c0ff]" },
+  // { year: "2028", glyph: "Δ", color: "text-[#7ee787]" },
 ];
 
 // Import every markdown or HTML file in the content/blogs directory tree. The
