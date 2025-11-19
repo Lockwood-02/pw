@@ -20,6 +20,29 @@ According to some online research, this appears to be a pretty good setup. I mus
 
 To give some context on what I want to do with my home lab (since really you can do so so much), is to host a minecraft server first and foremost, then host some virtual development environment that I can mess around in. As I have said in some previous posts, I really want to get into pen testing and cracking down on understanding networking, threats, and defense mechanisms. Having these virtual environments gives me a playground to mess around in. I also want to host some media but that is not the main priority for now.
 
+Before we begin this adventure, I want to set up something that will make management much easier. In my research, I kept coming across something called **Portainer**. This _supposedly_ will give us a UI that lets us manage our Docker containers _as a container_. We can start with this command:
+```
+docker volume create portainer_data
+
+docker run -d \
+  -p 9000:9000 \
+  --name portainer \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v portainer_data:/data \
+  portainer/portainer-ce:latest
+```
+I want to break down what all this means as it is a little odd for a command.
+**docker run -d**: This creates a new container and the "-d" at the end means _run detached_.
+**-p 9000:9000**: This maps the port 9000 on your PC to port 9000 inside the container. You need this to access the UI at http://localhost:9000.
+**--name portainer**: This just names the container _portainer_. This way, when we need to start/stop, we can just say "docker start/stop portainer".
+**-v /var/run/docker.sock:/var/run/docker.sock**: This mounts the docker socket. We need to do this to give Portainer control of Docker itself.
+**-v portainer_data:/data**: This maps the volume we just created earlier to Portainer's internal /data directory. This is where Portainer stores settings, users, templates, and container management metadata. It keeps all the configs even if the container is recreated.
+**portainer/portainer-ce:latest**: This is the image we are running. In this case, its the latest.
+
+Now that all of that is explained, lets actually run the damn thing. If all goes well, here is what it should look like:
+
+[INSERT IMAGE HERE]
+
 With all of this in mind, lets begin our home lab setup.... in the next blog >:)
 
 Till next time,
