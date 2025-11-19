@@ -61,7 +61,17 @@ sudo mkdir -p /opt/minecraft/data
 sudo chown -R $USER:$USER /opt/minecraft/data
 chmod -R u+rwX,go+rX /opt/minecraft/data
 ```
-Once this was done, I was able to load the server! Keep in mind, for now this is a **LAN** connection setup. You can set up internet wide connection (which we will in the next post), but you must be aware of the risks of opening up the lab to the internet. PLEASE DO RESEARCH ON NETWORKING (or stay tuned). For now, that's all I have for this post.
+Once this was done, I was able to load the server! If you want to host it online, feel free to portforward your router and provide that connection with your friends. Please **TAKE CAUTION** and understand the risks of this especially on a home lab connection. You might also have a world that has existed previously that you would like to migrate to this container. with docker, this is actually very simple. First, backup your server folder, just in case. Then, you can update the yml file that we made in the last step to point towards your server folder instead. You can do this by changes the following line in the yml file:
+```
+services:
+  minecraft:
+    ...
+    volumes:
+      - /home/you/mc-server:/data:Z   # <── use your real path here
+```
+With that, you should be able to boot up the container once more and get everything working!
+
+## Automation
 
 Till next time,
 GGs Gamers!
