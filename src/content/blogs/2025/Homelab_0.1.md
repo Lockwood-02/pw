@@ -20,6 +20,7 @@ According to some online research, this appears to be a pretty good setup. I mus
 
 To give some context on what I want to do with my home lab (since really you can do so so much), is to host a minecraft server first and foremost, then host some virtual development environment that I can mess around in. As I have said in some previous posts, I really want to get into pen testing and cracking down on understanding networking, threats, and defense mechanisms. Having these virtual environments gives me a playground to mess around in. I also want to host some media but that is not the main priority for now.
 
+## Portainer
 Before we begin this adventure, I want to set up something that will make management much easier. In my research, I kept coming across something called **Portainer**. This _supposedly_ will give us a UI that lets us manage our Docker containers _as a container_. We can start with this command:
 ```
 docker volume create portainer_data
