@@ -42,7 +42,7 @@ I want to break down what all this means as it is a little odd for a command.
 
 Now that all of that is explained, lets actually run the damn thing. If all goes well, here is what it should look like:
 
-![Portainer](/images/PortainerDemo.png)
+![Portainer](/public/images/PortainerDemo.png)
 
 And there you go! As of now there are no environments in there but as we continue, it will be populated more and more. So now, lets begin our home lab setup.... in the next blog >:)
 
